@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/Haseebullah/Desktop/Mlflow-Test/mlruns/0/6367af1ef38f4696a2fb25815edf85ef/artifacts
+end_time: 1758401467947
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 6367af1ef38f4696a2fb25815edf85ef
+run_name: amazing-hog-849
+run_uuid: 6367af1ef38f4696a2fb25815edf85ef
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1758401460983
+status: 3
+tags: []
+user_id: Haseebullah
