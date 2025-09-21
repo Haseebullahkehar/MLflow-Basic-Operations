@@ -12,7 +12,7 @@ from mlflow.models.signature import infer_signature
 def eval_metrics(actual, pred):
     rmse = np.sqrt(mean_squared_error(actual, pred))
     mae = mean_absolute_error(actual, pred)
-    r2 = r2_score(actual, pred)
+    r2 = r2_scores(actual, pred)
     return rmse, mae, r2
 
 
@@ -53,13 +53,13 @@ if __name__ == "__main__":
         mlflow.log_metric("mae", mae)
         mlflow.log_metric("r2", r2)
 
-        # Log model with signature
-        signature = infer_signature(train_x, lr.predict(train_x))
+        remote_server_uri = "https://dagshub.com/haseebullahkehar123/MLflow-Basic-Operations.mlflow"
+        mlflow.set_tracking_uri(remote_server_uri)
+
         tracking_url_type_store = urlparse(mlflow.get_tracking_uri()).scheme
 
         if tracking_url_type_store != "file":
             mlflow.sklearn.log_model(
-                lr, "model", registered_model_name="ElasticnetWineModel", signature=signature
-            )
+                lr, "model", registered_model_name="ElasticnetWineModel")
         else:
-            mlflow.sklearn.log_model(lr, "model", signature=signature)
+            mlflow.sklearn.log_model(lr, "model")
